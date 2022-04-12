@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+<li class="nav-item">
+	<a class="nav-link" href="/home">Home</a>
+  </li>
+  <li class="nav-item">
+	<a class="nav-link" href="/reviews" style="color:white">Reviews</a>
+  </li>
+</ul>
+</div>
+</nav>
+
+</br>
+
+<div class="container">
+
+	<h2 class="text-center">Artist Reviews</h2>
+
+	<form class="my-3" action="/sort_table" method="post">
+		<input class="form-control my-2" type="text" name="sort" placeholder="filter">
+		<input class="btn btn-primary my-2" type="submit" name="submit2" value="submit"/>
+	</form>
+
+	<table class="table text-center table-bordered">
+
+		<tr>
+			<th>Artist</th>
+			<th>Review</th>
+			<th>Review Date</th>
+		</tr>
+	
+		<%
+			if (result) {
+				var table = '';
+				result.forEach(function(item){
+					table += '<tr> <td>' + item.artist + '</td> <td>' +
+					 item.review + '</td> <td>' + item.review_date + '</td> </tr>';
+				}); %>
+			<%- table %>
+			<% } %>
+	
+	</table>
+
+</div>
+
+
+
+
+
+
+<%- include('../partials/footer') %>

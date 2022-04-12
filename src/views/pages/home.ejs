@@ -1,0 +1,130 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+<li class="nav-item mx-3">
+	<a class="nav-link" href="/home" style="color:white">Home</a>
+  </li>
+  <li class="nav-item">
+	<a class="nav-link" href="/reviews">Reviews</a>
+  </li>
+</ul>
+</div>
+<div class="container my-5 mx-3">
+
+	<form class="" action="/get_feed" method="post">
+		<div class="row my-2">
+		 
+		  <div class="col-12">
+			<input class="form-control" type="text" name="search" id="search" placeholder="Search Artists">
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<input class="btn" style="background-color: white;" type="submit" name="Submit" value = "Submit"/>
+			  </div>
+		</div>
+		  
+	</form>
+</div>
+</nav>
+
+<div class="container">
+
+	<% if(data){ 
+		var src = data.strArtistBanner;
+		%>
+	<% } %>
+	
+		<img class="my-3" src="<%- src%>">
+	
+	
+
+	<h1 class="text-center my-3" id="artistName">
+		<% if(data){
+			var display = '';
+			display += data.strArtist;
+			%>
+		<%- display %>
+		<%}%>	
+	</h1>
+	
+
+	<button class="btn btn-primary my-3" data-toggle="modal" data-target="#addReview">
+		Add Review
+	</button>
+
+	<div class="modal fade" id="addReview" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h4 class="modal-title" id="addReviewTitle">Add a Review</h5>
+			</div>
+			<div class="modal-body">
+				<form class="" action="/add_review" method="post">
+					<input class="form-control my-2" type="text" name="artistName" placeholder="Artist Name">
+					<input class="form-control my-2" type="text" name="review" placeholder="Review">
+					<input class="btn btn-primary my-2" type="submit" name="submit3" value="submit"/>
+				</form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<div class="my-3">
+
+		<% if(data){ 
+			var website = 'Website:  ';
+			website += data.strWebsite;
+			%>
+			<%- website%>
+
+		<% } %>
+
+		<!--
+			<button class="btn btn-primary" href= "<%= website %>"> Band Website</button>
+		-->
+		
+		
+	</div>
+
+	<div class="my-3">
+
+		<% if(data){
+			var display = 'Formation Year:  ';
+			'</br>'
+			display += data.intFormedYear;
+			%>
+		<%- display %>
+		<%}%>	
+
+	</div>
+
+	<div class="my-3">
+
+		<% if(data){
+			var display = 'Genres:  ';
+			'</br>'
+			display += data.strGenre;
+			%>
+		<%- display %>
+		<%}%>	
+
+	</div>
+
+	<div class="my-3">
+
+		<% if(data){
+			var display = 'Bio:  ';
+			'<div class = "my-2"></div>'
+			display += data.strBiographyEN;
+			%>
+		<%- display %>
+		<%}%>	
+
+	</div>
+
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,25 @@
+{
+    "name": "node-ejs",
+    "main": "server.js",
+    "module": "commonjs",
+    "moduleresolution": "node",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "ejs": "^3.1.5",
+        "ejs-lint": "^1.1.0",
+        "express": "^4.17.1",
+        "pg-promise": "^10.7.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "engines": {
+        "node": "12.x"
+    },
+    "scripts": {
+        "prestart": "npm install",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js"
+    }
+}
